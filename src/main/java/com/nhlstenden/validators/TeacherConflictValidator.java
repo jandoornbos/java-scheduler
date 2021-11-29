@@ -13,7 +13,7 @@ public class TeacherConflictValidator implements AppointmentConflictValidator
     {
         for (Event event : eventsToCheck) {
             for (Teacher teacher : event.getTeachers()) {
-                if (event.getTeachers().contains(teacher)) {
+                if (eventToAdd.getTeachers().contains(teacher)) {
                     return new TimeConflictValidator().hasConflict(new ArrayList<>(List.of(event)), eventToAdd);
                 }
             }

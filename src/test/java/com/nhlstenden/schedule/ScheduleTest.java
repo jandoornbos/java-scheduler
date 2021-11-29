@@ -247,4 +247,32 @@ class ScheduleTest
             this.schedule.addEvent(eventR2);
         });
     }
+
+    @Test
+    void addEvent_InDifferentRoomDifferentTeachers_ShouldNotThrow() throws EventException
+    {
+        Teacher teacherMartijn = new Teacher("Martijn", "Java", 2);
+
+        // 10:00 - 12:00
+        Event eventR1 = new Event(
+                LocalDateTime.of(2021, 11, 21, 10, 0),
+                LocalDateTime.of(2021, 11, 21, 12, 0),
+                this.e1
+        );
+
+        // 10:00 - 12:00
+        Event eventR2 = new Event(
+                LocalDateTime.of(2021, 11, 21, 10, 0),
+                LocalDateTime.of(2021, 11, 21, 12, 0),
+                this.e2
+        );
+
+        eventR1.addTeacher(this.teacherJan);
+        eventR2.addTeacher(teacherMartijn);
+
+        assertDoesNotThrow(() -> {
+            this.schedule.addEvent(eventR1);
+            this.schedule.addEvent(eventR2);
+        });
+    }
 }
