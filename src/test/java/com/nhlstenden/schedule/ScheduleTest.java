@@ -38,6 +38,9 @@ class ScheduleTest
     @Test
     void addEvent_InDifferentRoomsAtSameTime_ShouldNotThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |----------|event|----------|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -61,6 +64,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomAtSameTime_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |----------|event|----------|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -84,6 +90,9 @@ class ScheduleTest
     @Test
     void addEvent_InDifferentRoomSameTeachers_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |----------|event|----------|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -110,6 +119,9 @@ class ScheduleTest
     @Test
     void addEvent_InDifferentRoomSameGroups_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |----------|event|----------|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -136,6 +148,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomNoOverlappingTimes_ShouldNotThrow() throws EventException
     {
+        // eventR1   |------|event|--------------|
+        // eventR2   |------------------|event|--|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -159,6 +174,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomStartBeforeAndEndsAfter_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |-------|   event   |-------|
+
         // 10:00 - 12:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -182,6 +200,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomStartsAfterAndEndsBeforeOtherEvent_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|  event  |------|
+        // eventR2   |------------|event|--------|
+
         // 10:00 - 14:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -205,6 +226,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomStartsAfterAndEndsAfter_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |-------------|event|-------|
+
         // 10:00 - 14:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -228,6 +252,9 @@ class ScheduleTest
     @Test
     void addEvent_InSameRoomStartsBeforeAndEndsBefore_ShouldThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |-------|event|-------------|
+
         // 10:00 - 14:00
         Event eventR1 = new Event(
                 LocalDateTime.of(2021, 11, 21, 10, 0),
@@ -251,6 +278,9 @@ class ScheduleTest
     @Test
     void addEvent_InDifferentRoomDifferentTeachers_ShouldNotThrow() throws EventException
     {
+        // eventR1   |----------|event|----------|
+        // eventR2   |----------|event|----------|
+
         Teacher teacherMartijn = new Teacher("Martijn", "Java", 2);
 
         // 10:00 - 12:00
